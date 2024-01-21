@@ -3,8 +3,8 @@ import './footer.css'
 
 const Footer = () => {
   let footerStyle = {
-    position : 'absolute',
-    top : '150vh',
+    position : 'relative',
+    // top : '150vh',
     width : '100%',
     height : '50px',
   }

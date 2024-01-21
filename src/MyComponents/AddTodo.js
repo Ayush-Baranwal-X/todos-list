@@ -11,7 +11,10 @@ const AddTodo = (props) => {
         }
         else
         {
-            alert(title);
+            props.onAdd(title,desc);
+            setTitle("");
+            setDesc("");
+            // alert("Success");
         }
     };
 
@@ -20,12 +23,12 @@ const AddTodo = (props) => {
             <form onSubmit={submit}>
                 <h3>Add a Todo</h3>
                 <div className="mb-3">
-                    <label for="title" className="form-label">Todo Title</label>
+                    <label htmlFor="title" className="form-label">Todo Title</label>
                     <input type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}} className="form-control" id="title" aria-describedby="titleHelp"/>
                     <div id="descHelp" className="form-text">Add a description for better clarity</div>
                 </div>
                 <div className="mb-3">
-                    <label for="desc" className="form-label">Todo Description</label>
+                    <label htmlFor="desc" className="form-label">Todo Description</label>
                     <input type="text" value={desc} onChange={(e)=>{setDesc(e.target.value)}} className="form-control" id="desc"/>
                 </div>
                 {/* <div className="mb-3 form-check">

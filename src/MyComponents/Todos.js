@@ -4,14 +4,15 @@ import PropTypes from 'prop-types'
 
 const Todos = (props) => {
   return (
-    <div>
+    <div style={{minHeight: '100vh'}}>
       <h3 className='text-center'>To do Works</h3>
       {/* Whenever you render things using map, always pass a unique key with it */}
       {props.todos.length === 0 ? "No Todos to display" : 
       props.todos.map((todo) => {
         return (<div key = {todo.sno} style={{marginLeft : '1%'}}>
-          <h4>Item {todo.sno}</h4>
+          {/* <h4>Item {todo.sno}</h4> */}
           <TodoItem todo = {todo} onDelete = {props.onDelete}/>
+          <hr/>
         </div>)
       })
       }
