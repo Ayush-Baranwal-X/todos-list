@@ -3,9 +3,17 @@ import Headerx from './MyComponents/Header.js';
 import Todos from './MyComponents/Todos.js';
 import Footer from './MyComponents/Footer.js'
 import AddTodo from './MyComponents/AddTodo.js'
+import About from './MyComponents/About.js'
 import './App.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
+// React router
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
   let initTodo;
@@ -20,7 +28,7 @@ function App() {
   }
 
   const onDelete = (todo) => {
-    console.log("I am onDelete",todo);
+    // console.log("I am onDelete",todo);
     setTodos(todos.filter((e) => {
       // === and !== compares val and datatype
       // == and != only compares val and not datatype
@@ -81,14 +89,14 @@ function App() {
   // ]
 
   const onAdd = (title,desc) => {
-    console.log(title + " " + desc);
+    // console.log(title + " " + desc);
     let sno = 1;
     if(todos.length > 0)
     {
       sno = todos[todos.length-1].sno+1;
     }
     const mytodo = {sno : sno, title : title, desc : desc};
-    console.log(mytodo);
+    // console.log(mytodo);
     setTodos([...todos,mytodo]);
 
     // UseEffect is handling the following storage
@@ -103,10 +111,35 @@ function App() {
   // let myVar = 135;
   return (
     <>
+    <Router>
       <Headerx title = "To Do List" searchBar = {false}/>
-      <AddTodo onAdd = {onAdd}/>
-      <Todos todos = {todos} onDelete = {onDelete}/>
+
+      <Switch>
+          <Route exact path="/" render = {()=>{
+            return (
+              <>
+                <AddTodo onAdd = {onAdd}/>
+                <Todos todos = {todos} onDelete = {onDelete}/>
+              </>
+            );
+          }}>
+          </Route>
+          <Route exact path="/about" render = {()=>{
+            return (
+              <>
+                <About />
+              </>
+            );
+          }}>
+          </Route>
+      </Switch>
+
+      
+      
+      
+
       <Footer/>
+    </Router>
     </>
   );
 }
