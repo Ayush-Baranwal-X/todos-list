@@ -5,6 +5,10 @@ import Footer from './MyComponents/Footer.js'
 import './App.css';
 
 function App() {
+  const onDelete = (todo) => {
+    console.log("I am onDelete",todo);
+  }
+
   let todos = [
     {
       sno : 1,
@@ -27,7 +31,7 @@ function App() {
   return (
     <>
       <Headerx title = "To Do List" searchBar = {false}/>
-      <Todos todos = {todos}/>
+      <Todos todos = {todos} onDelete = {onDelete}/>
       <Footer/>
     </>
   );

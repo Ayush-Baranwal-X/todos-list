@@ -6,11 +6,12 @@ const Todos = (props) => {
   return (
     <div>
       <h3 className='text-center'>To do Works</h3>
+      {/* Whenever you render things using map, always pass a unique key with it */}
       {props.todos.map((todo) => {
-        return (<>
+        return (<div key = {todo.sno}>
           <h4>Item {todo.sno}</h4>
-          <TodoItem todo = {todo}/>
-        </>)
+          <TodoItem todo = {todo} onDelete = {props.onDelete}/>
+        </div>)
       })}
       
       {/* 

@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-
-const TodoItem = (props) => {
+// Here we have de structed instead of using props
+// So we need to use todo instead of props.todo
+const TodoItem = ({todo,onDelete}) => {
   return (
     <div>
-      <h4>{props.todo.title}</h4>
-      <p>{props.todo.desc}</p>
-      <button type="button" class="btn btn-sm btn-danger">Delete</button>
+      <h4>{todo.title}</h4>
+      <p>{todo.desc}</p>
+      <button type="button" className="btn btn-sm btn-danger" onClick = {() => {onDelete(todo)}}>Delete</button>
       <br/>
       <br/>
     </div>
