@@ -19,7 +19,7 @@ const AddTodo = (props) => {
     };
 
     return (
-        <div className='container my-3'>
+        <div className='container' style={{alignContent : 'center', width : '40%'}}>
             <form onSubmit={submit}>
                 <h3>Add a Todo</h3>
                 <div className="mb-3">
@@ -29,7 +29,7 @@ const AddTodo = (props) => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="desc" className="form-label">Todo Description</label>
-                    <input type="text" value={desc} onChange={(e)=>{setDesc(e.target.value)}} className="form-control" id="desc"/>
+                    <textarea value={desc} onChange={(e)=>{setDesc(e.target.value)}} className="form-control" id="desc" rows={5}/>
                 </div>
                 {/* <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>

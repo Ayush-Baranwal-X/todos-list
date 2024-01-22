@@ -5,11 +5,13 @@ import PropTypes from 'prop-types'
 const Todos = (props) => {
   return (
     <div style={{minHeight: '100vh'}}>
-      <h3 className='text-center'>To do Works</h3>
+      <br></br>
+      <h3 className='text-center'>List of Todos</h3>
       {/* Whenever you render things using map, always pass a unique key with it */}
-      {props.todos.length === 0 ? "No Todos to display" : 
+      
+      {props.todos.length === 0 ? <div style={{textAlign : 'center', marginTop : '2%', fontSize : '16px'}}>No Todos to display</div> : 
       props.todos.map((todo) => {
-        return (<div key = {todo.sno} style={{marginLeft : '1%'}}>
+        return (<div key = {todo.sno} style={{marginLeft : '10%', marginRight : '10%', marginTop : '2%'}}>
           {/* <h4>Item {todo.sno}</h4> */}
           <TodoItem todo = {todo} onDelete = {props.onDelete}/>
           <hr/>
