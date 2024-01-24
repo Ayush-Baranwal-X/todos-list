@@ -14,6 +14,16 @@ import {
   Route,
 } from "react-router-dom";
 
+let completed = 0;
+
+if(localStorage.getItem("todos") === null)
+{
+  completed = 0;
+}
+else
+{
+  completed = JSON.parse(localStorage.getItem("completed"));
+}
 
 function App() {
   let initTodo;
@@ -24,11 +34,14 @@ function App() {
   else
   {
     initTodo = JSON.parse(localStorage.getItem("todos"));
-
   }
 
-  const onDelete = (todo) => {
+  const onDelete = (todo,purpose) => {
     // console.log("I am onDelete",todo);
+    if(purpose === 0)
+    {
+      completed++;
+    }
     setTodos(todos.filter((e) => {
       // === and !== compares val and datatype
       // == and != only compares val and not datatype
@@ -106,7 +119,9 @@ function App() {
   // This used to ensure that things are stored only after updation of todos
   useEffect(() => {
     localStorage.setItem("todos",JSON.stringify(todos));
+    localStorage.setItem("completed",JSON.stringify(completed));
   }, [todos])
+
 
   // let myVar = 135;
   return (
@@ -119,7 +134,7 @@ function App() {
             return (
               <>
                 <AddTodo onAdd = {onAdd}/>
-                <Todos todos = {todos} onDelete = {onDelete}/>
+                <Todos todos = {todos} completed = {completed} onDelete = {onDelete}/>
               </>
             );
           }}>

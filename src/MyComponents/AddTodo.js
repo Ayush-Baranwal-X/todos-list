@@ -18,6 +18,12 @@ const AddTodo = (props) => {
         }
     };
 
+    const resetx = (e) => {
+        e.preventDefault();
+        setTitle("");
+        setDesc("");
+    }
+
     return (
         <div className='container' style={{alignContent : 'center', width : '40%'}}>
             <form onSubmit={submit}>
@@ -36,6 +42,7 @@ const AddTodo = (props) => {
                         <label className="form-check-label" for="exampleCheck1">Check me out</label>
                 </div> */}
                 <button type="submit" className="btn btn-success">Add Todo</button>
+                <button type="reset" className="btn btn-danger" onClick={resetx} style={{marginLeft : "10px", width : "100px"}}>Clear</button>
             </form>
         </div>
     )

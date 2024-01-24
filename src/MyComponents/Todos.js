@@ -7,6 +7,7 @@ const Todos = (props) => {
     <div style={{minHeight: '100vh'}}>
       <br></br>
       <h3 className='text-center'>List of Todos</h3>
+      <h5 className='text-center'>(No of Todos completed till now : {props.completed})</h5>
       {/* Whenever you render things using map, always pass a unique key with it */}
       
       {props.todos.length === 0 ? <div style={{textAlign : 'center', marginTop : '2%', fontSize : '16px'}}>No Todos to display</div> : 

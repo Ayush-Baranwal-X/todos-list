@@ -8,7 +8,8 @@ const TodoItem = ({todo,onDelete}) => {
     <div>
       <h4>{todo.title}</h4>
       <p>{todo.desc}</p>
-      <button type="button" className="btn btn-sm btn-danger" onClick = {() => {onDelete(todo)}}>Delete</button>
+      <button type="button" style={{width : "60px", marginRight : "10px"}} className="btn btn-sm btn-success" onClick = {() => {onDelete(todo,0)}}>Done</button>
+      <button type="button" className="btn btn-sm btn-danger" onClick = {() => {onDelete(todo,1)}}>Delete</button>
     </div>
   )
 }
