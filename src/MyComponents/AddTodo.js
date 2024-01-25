@@ -41,8 +41,8 @@ const AddTodo = (props) => {
                     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                         <label className="form-check-label" for="exampleCheck1">Check me out</label>
                 </div> */}
-                <button type="submit" className="btn btn-success">Add Todo</button>
-                <button type="reset" className="btn btn-danger" onClick={resetx} style={{marginLeft : "10px", width : "100px"}}>Clear</button>
+                <button type="submit" className="btn btn-success" style={{marginRight : "10px", marginBottom : "5px"}}>Add Todo</button>
+                <button type="reset" className="btn btn-danger" onClick={resetx} style={{width : "100px", marginBottom : "5px"}}>Clear</button>
             </form>
         </div>
     )
