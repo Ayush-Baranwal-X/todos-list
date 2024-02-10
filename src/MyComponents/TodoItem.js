@@ -3,13 +3,20 @@ import PropTypes from 'prop-types'
 
 // Here we have de structed instead of using props
 // So we need to use todo instead of props.todo
-const TodoItem = ({todo,onDelete}) => {
+const TodoItem = ({ todo, onDelete }) => {
   return (
     <div>
-      <h4>{todo.title}</h4>
-      <p>{todo.desc}</p>
-      <button type="button" style={{width : "60px", marginRight : "10px"}} className="btn btn-sm btn-success" onClick = {() => {onDelete(todo,0)}}>Done</button>
-      <button type="button" className="btn btn-sm btn-danger" onClick = {() => {onDelete(todo,1)}}>Delete</button>
+      <div class="card text-bg-light">
+        <div class="card-header">
+        <b>{todo.title}</b>
+        </div>
+        <div class="card-body">
+          {/* <h5 class="card-title"></h5> */}
+          <p class="card-text">{todo.desc}</p>
+          <button type="button" style={{ width: "60px", marginRight: "10px" }} className="btn btn-sm btn-dark" onClick={() => { onDelete(todo, 0) }}>Done</button>
+          <button type="button" className="btn btn-sm btn-dark" onClick={() => { onDelete(todo, 1) }}>Delete</button>
+        </div>
+      </div>
     </div>
   )
 }
@@ -17,9 +24,9 @@ const TodoItem = ({todo,onDelete}) => {
 export default TodoItem
 
 TodoItem.deafaultProps = {
-  todo : {},
+  todo: {},
 }
 
 TodoItem.prototype = {
-  todo : PropTypes.object,
+  todo: PropTypes.object,
 }

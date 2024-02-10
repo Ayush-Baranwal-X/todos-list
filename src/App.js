@@ -16,30 +16,31 @@ import {
 
 let completed = 0;
 
-if(localStorage.getItem("todos") === null)
-{
+if (localStorage.getItem("todos") === null) {
   completed = 0;
 }
-else
-{
+else {
   completed = JSON.parse(localStorage.getItem("completed"));
 }
 
 function App() {
+  let screenWidth = window.screen.width;
+  let mobile = false;
+  if(screenWidth < 768){
+    mobile = true;
+  }
+
   let initTodo;
-  if(localStorage.getItem("todos") === null)
-  {
+  if (localStorage.getItem("todos") === null) {
     initTodo = [];
   }
-  else
-  {
+  else {
     initTodo = JSON.parse(localStorage.getItem("todos"));
   }
 
-  const onDelete = (todo,purpose) => {
+  const onDelete = (todo, purpose) => {
     // console.log("I am onDelete",todo);
-    if(purpose === 0)
-    {
+    if (purpose === 0) {
       completed++;
     }
     setTodos(todos.filter((e) => {
@@ -51,14 +52,14 @@ function App() {
     // Deleting this way in react does not work
     // let index = todos.indexOf(todo);
     // todos.splice(index,1);
-    
+
     // UseEffect is handling the following storage
     // localStorage.setItem("todos",JSON.stringify(todos));
   };
 
   const [todos, setTodos] = useState(initTodo);
 
-  
+
   // const [todos, setTodos] = useState([
   //   {
   //     sno : 1,
@@ -101,16 +102,15 @@ function App() {
   //   }
   // ]
 
-  const onAdd = (title,desc) => {
+  const onAdd = (title, desc) => {
     // console.log(title + " " + desc);
     let sno = 1;
-    if(todos.length > 0)
-    {
-      sno = todos[todos.length-1].sno+1;
+    if (todos.length > 0) {
+      sno = todos[todos.length - 1].sno + 1;
     }
-    const mytodo = {sno : sno, title : title, desc : desc};
+    const mytodo = { sno: sno, title: title, desc: desc };
     // console.log(mytodo);
-    setTodos([...todos,mytodo]);
+    setTodos([...todos, mytodo]);
 
     // UseEffect is handling the following storage
     // localStorage.setItem("todos",JSON.stringify(todos));
@@ -118,40 +118,49 @@ function App() {
 
   // This used to ensure that things are stored only after updation of todos
   useEffect(() => {
-    localStorage.setItem("todos",JSON.stringify(todos));
-    localStorage.setItem("completed",JSON.stringify(completed));
+    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("completed", JSON.stringify(completed));
   }, [todos])
 
 
   // let myVar = 135;
   return (
     <>
-    <Router>
-      <Headerx title = "To Do List" searchBar = {false}/>
+      <Router>
 
-      <Switch>
-          <Route exact path="/" render = {()=>{
+        <Switch>
+          <Route exact path="/" render={() => {
             return (
               <>
-                <AddTodo onAdd = {onAdd}/>
-                <Todos todos = {todos} completed = {completed} onDelete = {onDelete}/>
+                <Headerx title="To Do List" searchBar={false} tab1={true}/>
+                <Todos todos={todos} completed={completed} onDelete={onDelete} mobile = {mobile} />
               </>
             );
           }}>
           </Route>
-          <Route exact path="/about" render = {()=>{
+          <Route exact path="/addtodo" render={() => {
             return (
               <>
+                <Headerx title="To Do List" searchBar={false} tab2={true} />
+                <AddTodo onAdd={onAdd} mobile = {mobile} />
+              </>
+            );
+          }}>
+          </Route>
+          <Route exact path="/about" render={() => {
+            return (
+              <>
+                <Headerx title="To Do List" searchBar={false} tab3={true} />
                 <About />
               </>
             );
           }}>
           </Route>
-      </Switch>
+        </Switch>
 
-      
-      <Footer/>
-    </Router>
+
+        <Footer />
+      </Router>
     </>
   );
 }

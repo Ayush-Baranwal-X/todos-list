@@ -3,18 +3,25 @@ import './footer.css'
 
 const Footer = () => {
   let footerStyle = {
-    position : 'relative',
-    // top : '150vh',
-    width : '100%',
-    height : '50px',
+    position: 'fixed',
+    backgroundColor: 'black',
+    color: 'white',
+    bottom: '0',
+    height: '60px',
+    width: '100%',
+    textAlign: 'center',
+    paddingTop: '0.2%'
   }
   return (
     // Non inline css
-    <footer style={footerStyle} className='bg-dark text-light'>
-      <p className='text-center' style={{margin : 0, padding : 0}}>Copyright &copy; MyTodosList.com</p>
-      <p className='sylex' style={{textAlign : 'center'}}>TradeMark</p>
-    </footer>
-    
+    <>
+      <div style={{ height: '80px' }}></div>
+      <footer style={footerStyle}>
+        Copyright &copy; listxtodo.web.app
+        <br></br>
+        TradeMark
+      </footer>
+    </>
     // Inline css
     // <footer style={{position : 'fixed', bottom : 0, width : '100%', height : '10%', marginBottom : '0px'}} className='bg-dark text-light'>
     //   <p className='text-center'>Copyright &copy; MyTodosList.com</p>
