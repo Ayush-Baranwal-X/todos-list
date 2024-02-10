@@ -13,7 +13,7 @@ const Todos = (props) => {
       
       {props.todos.length === 0 ? <div style={{textAlign : 'center', marginTop : '2%', fontSize : '16px'}}>No Todos to display</div> : 
       props.todos.map((todo) => {
-        return (<div key = {todo.sno} style={{marginLeft : props.mobile === false ? '20%' : '5%', marginRight : props.mobile == false ? '20%' : '5%', marginTop : '0.5%'}}>
+        return (<div key = {todo.sno} style={{marginLeft : props.mobile === false ? '20%' : '5%', marginRight : props.mobile === false ? '20%' : '5%', marginTop : '0.5%'}}>
           {/* <h4>Item {todo.sno}</h4> */}
           <TodoItem todo = {todo} onDelete = {props.onDelete}/>
           {/* <hr/> */}
